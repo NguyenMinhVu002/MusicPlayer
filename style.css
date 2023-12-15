@@ -1,0 +1,175 @@
+*{
+    margin: 0px;padding: 0px;box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background: linear-gradient(186deg, rgba(16,53,123,1) 0%, rgba(23,35,91,1) 93%);
+}
+.container{
+    width: 350px;
+    height: 550px;
+    border-radius: 20px;
+    background: #13045d;
+    box-shadow: 0 40px 90px #13045d;
+    padding: 30px;
+    overflow: hidden;
+    color: aliceblue;
+}
+.song-name,.artist{
+    text-align: center;
+    text-transform: capitalize;
+}
+.song-name{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.artist{
+    font-size: 15px;
+}
+.box-disk{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: relative;
+    display: block;
+    margin: 40px auto;
+    background: url(images/photo-1.jpg) no-repeat top left;
+    background-size: cover;
+    box-shadow: 0 0 0 5px rgba(16,53,123,0.8);
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+.box-disk.play{
+    animation-play-state: running;
+}
+.box-disk::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #13045d;
+}
+.music-slider{
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.seek-bar{
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background: #ccc;
+    -webkit-appearance: none;
+    cursor: pointer;
+    overflow: hidden;   
+}
+.seek-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    background: forestgreen;
+    box-shadow: -400px 0 0 400px royalblue;
+}
+.current-time,.music-time{
+    font-size: 12px;
+}
+.music-time{
+    position: absolute;
+    float: left;
+    right: 0;
+}
+.controls{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}
+.btn-play{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: coral;
+    cursor: pointer;
+    border: none;
+}
+.btn-play span{
+    position: absolute;
+    top:50%;
+    left: 25%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 30px;
+    border-radius: 2px;
+    background: beige;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: .5s;
+}
+.btn-play span:nth-child(2){
+    left: 55%;
+    transform-origin: center;
+}
+.btn-play.pause span:nth-child(2){
+    transform:translateY(-50%) scaleY(0);
+}
+.btn-play.pause span:nth-child(1){
+    width: 35%;
+    left: 53%;
+    transform:translate(-50%,-50%);
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.btn-play.pause{
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0;
+    }
+    50%{
+        box-shadow: 0 0 0 5px rgba(16,53,123,0.1);
+    }
+    100%{
+        box-shadow: 0 0 0 5px rgba(16,53,123,0.8);
+    }
+}
+
+
+.btn{
+    width: 40px;
+    height: 40px;
+    background: salmon;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+   
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
